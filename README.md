@@ -208,44 +208,22 @@ If you find this project useful in your research, please consider cite:
 
 This project is released under the [Apache 2.0 license](LICENSE).
 
-## OpenMMLab Family
+## To train a mmocr text recognition model on your dataset
+1) Download the dataset and place it in the required folder.
+2) First create a vocab file that consists of the characters to be expected in your dataset and store it in ```dicts``` folder.
+3) Now write a config file for the dataset and store it in ```configs/textrecog/_base_/datasets``` folder.
+4) Then write a config file for any of the models provided by mmocr and store it in ```configs/textrecog/model_name```. You may have to edit the base config file and the main config file according to your dataset.
 
-- [MMEngine](https://github.com/open-mmlab/mmengine): OpenMMLab foundational library for training deep learning models
-- [MMCV](https://github.com/open-mmlab/mmcv): OpenMMLab foundational library for computer vision.
-- [MIM](https://github.com/open-mmlab/mim): MIM installs OpenMMLab packages.
-- [MMClassification](https://github.com/open-mmlab/mmclassification): OpenMMLab image classification toolbox and benchmark.
-- [MMDetection](https://github.com/open-mmlab/mmdetection): OpenMMLab detection toolbox and benchmark.
-- [MMDetection3D](https://github.com/open-mmlab/mmdetection3d): OpenMMLab's next-generation platform for general 3D object detection.
-- [MMRotate](https://github.com/open-mmlab/mmrotate): OpenMMLab rotated object detection toolbox and benchmark.
-- [MMSegmentation](https://github.com/open-mmlab/mmsegmentation): OpenMMLab semantic segmentation toolbox and benchmark.
-- [MMOCR](https://github.com/open-mmlab/mmocr): OpenMMLab text detection, recognition, and understanding toolbox.
-- [MMPose](https://github.com/open-mmlab/mmpose): OpenMMLab pose estimation toolbox and benchmark.
-- [MMHuman3D](https://github.com/open-mmlab/mmhuman3d): OpenMMLab 3D human parametric model toolbox and benchmark.
-- [MMSelfSup](https://github.com/open-mmlab/mmselfsup): OpenMMLab self-supervised learning toolbox and benchmark.
-- [MMRazor](https://github.com/open-mmlab/mmrazor): OpenMMLab model compression toolbox and benchmark.
-- [MMFewShot](https://github.com/open-mmlab/mmfewshot): OpenMMLab fewshot learning toolbox and benchmark.
-- [MMAction2](https://github.com/open-mmlab/mmaction2): OpenMMLab's next-generation action understanding toolbox and benchmark.
-- [MMTracking](https://github.com/open-mmlab/mmtracking): OpenMMLab video perception toolbox and benchmark.
-- [MMFlow](https://github.com/open-mmlab/mmflow): OpenMMLab optical flow toolbox and benchmark.
-- [MMEditing](https://github.com/open-mmlab/mmediting): OpenMMLab image and video editing toolbox.
-- [MMGeneration](https://github.com/open-mmlab/mmgeneration): OpenMMLab image and video generative models toolbox.
-- [MMDeploy](https://github.com/open-mmlab/mmdeploy): OpenMMLab model deployment framework.
-
-## Welcome to the OpenMMLab community
-
-Scan the QR code below to follow the OpenMMLab team's [**Zhihu Official Account**](https://www.zhihu.com/people/openmmlab) and join the OpenMMLab team's [**QQ Group**](https://jq.qq.com/?_wv=1027&k=aCvMxdr3), or join the official communication WeChat group by adding the WeChat, or join our [**Slack**](https://join.slack.com/t/mmocrworkspace/shared_invite/zt-1ifqhfla8-yKnLO_aKhVA2h71OrK8GZw)
-
-<div align="center">
-<img src="https://raw.githubusercontent.com/open-mmlab/mmcv/master/docs/en/_static/zhihu_qrcode.jpg" height="400" />  <img src="https://raw.githubusercontent.com/open-mmlab/mmcv/master/docs/en/_static/qq_group_qrcode.jpg" height="400" />  <img src="https://raw.githubusercontent.com/open-mmlab/mmcv/master/docs/en/_static/wechat_qrcode.jpg" height="400" />
-</div>
-
-We will provide you with the OpenMMLab community
-
-- 📢 share the latest core technologies of AI frameworks
-- 💻 Explaining PyTorch common module source Code
-- 📰 News related to the release of OpenMMLab
-- 🚀 Introduction of cutting-edge algorithms developed by OpenMMLab
-  🏃 Get the more efficient answer and feedback
-- 🔥 Provide a platform for communication with developers from all walks of life
-
-The OpenMMLab community looks forward to your participation! 👬
+## To train crnn model on hindi dataset
+1) Download the dataset and place it in the required folder.
+2) Check the vocab file in ```dicts/hindi_vocab.txt``` directory.
+3) In ```configs/textrecog/_base_/datasets/hindi_train.py```
+   1. Change the ```hindi_textrecog_data_root``` to the path of the dataset folder containing ```train``` and ```test``` images.
+   2. Change the ```ann_file``` to path of the JSON file containing annotations of train and test data in ```hindi_textrecog_train``` and ```hindi_textrecog_test``` respectively.
+5) In ```configs/textrecog/crnn/_base_crnn_mini-vgg.py``` change ```dict_file``` in ```dictionary``` to path of the vocab file i.e. ```dicts/hindi_vocab.txt```.
+6) Now in terminal run the command
+   ```bibtex
+   python ${path_to_train.py} ${path_to_crnn_mini-vgg_5e_indic.py}
+   ```
+   1. ```train.py``` is located in ```tools/train.py```
+   2. ```crnn_mini-vgg_5e_indic.py``` is located in ```configs/textrecog/crnn/_base_crnn_mini-vgg.py```
