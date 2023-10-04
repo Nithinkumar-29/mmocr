@@ -1,0 +1,51 @@
+# training schedule for 1x
+#config file for crnn model
+_base_ = [
+    '../_base_/datasets/hindi_train.py',
+    '../_base_/default_runtime.py', # added to define train_cfg and optim_wrapper
+    '../_base_/schedules/schedule_adadelta_5e.py',
+    '_base_crnn_mini-vgg.py'
+]
+# dataset settings
+train_list = [_base_.hindi_textrecog_train]
+test_list = [_base_.hindi_textrecog_test]
+
+default_hooks = dict(logger=dict(type='LoggerHook', interval=50), )
+train_dataloader = dict(
+    batch_size=64,
+    num_workers=8,#no. of workers initially 64 but changed to 8 as suggested in output
+    persistent_workers=True,
+    sampler=dict(type='DefaultSampler', shuffle=True),
+    dataset=dict(
+        type='ConcatDataset',
+        datasets=train_list,
+        pipeline=_base_.train_pipeline))
+test_dataloader = dict(
+    batch_size=1,
+    num_workers=4,
+    persistent_workers=True,
+    drop_last=False,
+    sampler=dict(type='DefaultSampler', shuffle=False),
+    dataset=dict(
+        type='ConcatDataset',
+        datasets=test_list,
+        pipeline=_base_.test_pipeline))
+val_dataloader = test_dataloader
+
+val_evaluator = dict(
+    dataset_prefixes=['HINDI'])
+test_evaluator = val_evaluator
+
+auto_scale_lr = dict(base_batch_size=64 * 4)
+# train_cfg = dict(
+#     # Your custom training configuration parameters go here
+# )
+
+# optim_wrapper = dict(
+#     type='OptimizerWrapper',
+#     optimizer=dict(
+#         type='SGD',
+#         lr=0.001,
+#         momentum=0.9,
+#     )
+# )
