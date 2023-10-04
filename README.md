@@ -220,10 +220,11 @@ This project is released under the [Apache 2.0 license](LICENSE).
 3) In ```configs/textrecog/_base_/datasets/hindi_train.py```
    1. Change the ```hindi_textrecog_data_root``` to the path of the dataset folder containing ```train``` and ```test``` images.
    2. Change the ```ann_file``` to path of the JSON file containing annotations of train and test data in ```hindi_textrecog_train``` and ```hindi_textrecog_test``` respectively.
-5) In ```configs/textrecog/crnn/_base_crnn_mini-vgg.py``` change ```dict_file``` in ```dictionary``` to path of the vocab file i.e. ```dicts/hindi_vocab.txt```.
-6) Now in terminal run the command
+4) In ```configs/textrecog/crnn/_base_crnn_mini-vgg.py``` change ```dict_file``` in ```dictionary``` to path of the vocab file i.e. ```dicts/hindi_vocab.txt```.
+5) Now in terminal run the command
    ```bibtex
    python ${path_to_train.py} ${path_to_crnn_mini-vgg_5e_indic.py}
    ```
    1. ```train.py``` is located in ```tools/train.py```
    2. ```crnn_mini-vgg_5e_indic.py``` is located in ```configs/textrecog/crnn/_base_crnn_mini-vgg.py```
+6) Checkpoints and training information logs will be saved in ```tools/work_dirs/crnn_mini-vgg_5e_indic``` directory.
