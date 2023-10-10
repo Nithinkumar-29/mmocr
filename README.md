@@ -228,3 +228,57 @@ This project is released under the [Apache 2.0 license](LICENSE).
    1. ```train.py``` is located in ```tools/train.py```
    2. ```crnn_mini-vgg_5e_indic.py``` is located in ```configs/textrecog/crnn/_base_crnn_mini-vgg.py```
 6) Checkpoints and training information logs will be saved in ```tools/work_dirs/crnn_mini-vgg_5e_indic``` directory.
+
+## Steps for inference using detection
+1) Download the model weights of one of the detection models.
+   ```
+   https://mmocr.readthedocs.io/en/latest/textdet_models.html
+   ```
+2) Run the file ```det_inference.py``` in ```inference``` folder in terminal.
+   ```
+   python det_inference.py
+   ```
+3) Enter the path for images.
+4) Enter the path for detection model weights.
+5) Enter the path for the detection model config file.
+6) Enter the path for the output directory.
+7) The results will be stored in the output directory in two folders.
+   1. ```preds``` folder contains the json files.
+   2. ```vis``` folder contains the result images.
+
+## Steps for inference using recognition
+1) Download the model weights of one of the recognition models.
+   ```
+   https://mmocr.readthedocs.io/en/latest/textrecog_models.html
+   ```
+2) Run the file ```rec_inference.py``` in ```inference``` folder in terminal.
+   ```
+   python rec_inference.py
+   ```
+3) Enter the path for images.
+4) Enter the path for recognition model weights.
+5) Enter the path for the recognition model config file.
+6) Enter the path for the output directory.
+7) The results will be stored in the output directory in two folders.
+   1. ```preds``` folder contains the json files.
+   2. ```vis``` folder contains the result images.
+
+## Steps for inference using end-to-end OCR
+1) Download the model weights of one of the detection models and one of the recognition models.
+   ```
+   https://mmocr.readthedocs.io/en/latest/textdet_models.html
+   https://mmocr.readthedocs.io/en/latest/textrecog_models.html
+   ```
+2) Run the file ```inferencing.py``` in ```inference``` folder in terminal.
+   ```
+   python inferencing.py
+   ```
+3) Enter the path for images.
+4) Enter the path for recognition model weights.
+5) Enter the path for the recognition model config file.
+6) Enter the path for detection model weights.
+7) Enter the path for detection model config file.
+8) Enter the path for output directory.
+9) The results will be stored in output directory in two folders.
+   1. ```preds``` folder contains the json files.
+   2. ```vis``` folder contains the result images.
