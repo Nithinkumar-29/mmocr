@@ -1,5 +1,5 @@
 _base_ = [
-    'svtr-tiny_20e_st_mj.py',
+    'svtr_tiny_indic.py',
 ]
 
 model = dict(
