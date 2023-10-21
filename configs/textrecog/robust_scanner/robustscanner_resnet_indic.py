@@ -1,13 +1,13 @@
 _base_ = [
-    '../_base_/datasets/toy_data.py',
+    '../_base_/datasets/hindi_train.py',
     '../_base_/default_runtime.py',
     '../_base_/schedules/schedule_adam_step_5e.py',
     '_base_robustscanner_resnet31.py',
 ]
 
 # dataset settings
-train_list = [_base_.toy_rec_train]
-test_list = [_base_.toy_rec_test]
+train_list = [_base_.hindi_textrecog_train]
+test_list = [_base_.hindi_textrecog_test]
 
 default_hooks = dict(logger=dict(type='LoggerHook', interval=100))
 
@@ -33,5 +33,7 @@ val_dataloader = dict(
         pipeline=_base_.test_pipeline))
 test_dataloader = val_dataloader
 
-val_evaluator = dict(dataset_prefixes=['Toy'])
+val_evaluator = dict(dataset_prefixes=['HINDI'])
 test_evaluator = val_evaluator
+
+# auto_scale_lr = dict(base_batch_size=64 * 16)
