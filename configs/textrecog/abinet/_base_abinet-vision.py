@@ -1,6 +1,6 @@
 dictionary = dict(
     type='Dictionary',
-    dict_file='{{ fileDirname }}/../../../dicts/lower_english_digits.txt',
+    dict_file='C:/Users/vanga/OneDrive/Desktop/temp/mmocr/demo/mmocr/dicts/hindi_vocab.txt',
     with_start=True,
     with_end=True,
     same_start_end=True,
