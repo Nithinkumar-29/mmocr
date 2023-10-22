@@ -226,8 +226,89 @@ This project is released under the [Apache 2.0 license](LICENSE).
    python ${path_to_train.py} ${path_to_crnn_mini-vgg_5e_indic.py}
    ```
    1. ```train.py``` is located in ```tools/train.py```
-   2. ```crnn_mini-vgg_5e_indic.py``` is located in ```configs/textrecog/crnn/_base_crnn_mini-vgg.py```
+   2. ```crnn_mini-vgg_5e_indic.py``` is located in ```configs/textrecog/crnn/```
 6) Checkpoints and training information logs will be saved in ```tools/work_dirs/crnn_mini-vgg_5e_indic``` directory.
+
+## To train abinet model on hindi dataset
+1) Download the dataset and place it in the required folder.
+2) Check the vocab file in ```dicts/hindi_vocab.txt``` directory.
+3) In ```configs/textrecog/_base_/datasets/hindi_train.py```
+   1. Change the ```hindi_textrecog_data_root``` to the path of the dataset folder containing ```train``` and ```test``` images.
+   2. Change the ```ann_file``` to path of the JSON file containing annotations of train and test data in ```hindi_textrecog_train``` and ```hindi_textrecog_test``` respectively.
+4) In ```configs/textrecog/abinet/_base_abinet-vision.py``` change ```dict_file``` in ```dictionary``` to path of the vocab file i.e. ```dicts/hindi_vocab.txt```.
+5) Now in terminal run the command
+   ```bibtex
+   python ${path_to_train.py} ${path_to_abinet_indic.py}
+   ```
+   1. ```train.py``` is located in ```tools/train.py```
+   2. ```abinet_indic.py``` is located in ```configs/textrecog/abinet/```
+6) Checkpoints and training information logs will be saved in ```tools/work_dirs/abinet_indic``` directory.
+
+## To train aster model on hindi dataset
+1) Download the dataset and place it in the required folder.
+2) Check the vocab file in ```dicts/hindi_vocab.txt``` directory.
+3) In ```configs/textrecog/_base_/datasets/hindi_train.py```
+   1. Change the ```hindi_textrecog_data_root``` to the path of the dataset folder containing ```train``` and ```test``` images.
+   2. Change the ```ann_file``` to path of the JSON file containing annotations of train and test data in ```hindi_textrecog_train``` and ```hindi_textrecog_test``` respectively.
+4) In ```configs/textrecog/aster/_base_aster.py``` change ```dict_file``` in ```dictionary``` to path of the vocab file i.e. ```dicts/hindi_vocab.txt```.
+5) Now in terminal run the command
+   ```bibtex
+   python ${path_to_train.py} ${path_to_aster_indic.py}
+   ```
+   1. ```train.py``` is located in ```tools/train.py```
+   2. ```aster_indic.py``` is located in ```configs/textrecog/aster/```
+6) Checkpoints and training information logs will be saved in ```tools/work_dirs/aster_indic``` directory.
+
+## To train nrtr model on hindi dataset
+1) Download the dataset and place it in the required folder.
+2) Check the vocab file in ```dicts/hindi_vocab.txt``` directory.
+3) In ```configs/textrecog/_base_/datasets/hindi_train.py```
+   1. Change the ```hindi_textrecog_data_root``` to the path of the dataset folder containing ```train``` and ```test``` images.
+   2. Change the ```ann_file``` to path of the JSON file containing annotations of train and test data in ```hindi_textrecog_train``` and ```hindi_textrecog_test``` respectively.
+4) In ```nrtr``` we have 2 models of approach - ```modality-transform```, ```resnet31```.
+5) For ```modality-transform``` model in ```configs/textrecog/nrtr/_base_nrtr_modality-transform.py``` change ```dict_file``` in ```dictionary``` to path of the vocab file i.e. ```dicts/hindi_vocab.txt```.
+6) For ```resnet31``` model in ```configs/textrecog/nrtr/_base_nrtr_resnet31.py``` change ```dict_file``` in ```dictionary``` to path of the vocab file i.e. ```dicts/hindi_vocab.txt```. 
+7) Now in terminal run the command
+   ```bibtex
+   python ${path_to_train.py} ${path_to_nrtr_indic_modality_transform.py}
+   python ${path_to_train.py} ${path_to_nrtr_resnet_indic.py}
+   ```
+   1. ```train.py``` is located in ```tools/train.py```
+   2. ```nrtr_indic_modality_transform.py``` and ```nrtr_resnet_indic.py``` are located in ```configs/textrecog/nrtr/```
+8) Checkpoints and training information logs will be saved in ```tools/work_dirs/nrtr_resnet_indic``` or ```tools/work_dirs/nrtr_indic_modality_transform``` directory.
+
+## To train robust_scanner model on hindi dataset
+1) Download the dataset and place it in the required folder.
+2) Check the vocab file in ```dicts/hindi_vocab.txt``` directory.
+3) In ```configs/textrecog/_base_/datasets/hindi_train.py```
+   1. Change the ```hindi_textrecog_data_root``` to the path of the dataset folder containing ```train``` and ```test``` images.
+   2. Change the ```ann_file``` to path of the JSON file containing annotations of train and test data in ```hindi_textrecog_train``` and ```hindi_textrecog_test``` respectively.
+4) In ```configs/textrecog/robust_scanner/_base_robustscanner_resnet31.py.py``` change ```dict_file``` in ```dictionary``` to path of the vocab file i.e. ```dicts/hindi_vocab.txt```.
+5) Now in terminal run the command
+   ```bibtex
+   python ${path_to_train.py} ${path_to_robustscanner_resnet_indic.py}
+   ```
+   1. ```train.py``` is located in ```tools/train.py```
+   2. ```robustscanner_resnet_indic.py``` is located in ```configs/textrecog/robust_scanner/```
+6) Checkpoints and training information logs will be saved in ```tools/work_dirs/robustscanner_resnet_indic``` directory.
+## To train svtr model on hindi dataset
+1) Download the dataset and place it in the required folder.
+2) Check the vocab file in ```dicts/hindi_vocab.txt``` directory.
+3) In ```configs/textrecog/_base_/datasets/hindi_train.py```
+   1. Change the ```hindi_textrecog_data_root``` to the path of the dataset folder containing ```train``` and ```test``` images.
+   2. Change the ```ann_file``` to path of the JSON file containing annotations of train and test data in ```hindi_textrecog_train``` and ```hindi_textrecog_test``` respectively.
+4) In ```svtr``` we have 4 models of approach - ```svtr-tiny```, ```svtr-small```, ```svtr-base```, ```svtr-large```.
+5) For all models in ```configs/textrecog/svtr/_base_svtr-tiny.py``` change ```dict_file``` in ```dictionary``` to path of the vocab file i.e. ```dicts/hindi_vocab.txt```.
+7) Now in terminal run the command
+   ```bibtex
+   python ${path_to_train.py} ${path_to_svtr_tiny_indic.py}
+   python ${path_to_train.py} ${path_to_svtr-small_20e_st_mj.py}
+   python ${path_to_train.py} ${path_to_svtr-base_20e_st_mj.py}
+   python ${path_to_train.py} ${path_to_svtr-large_20e_st_mj.py}
+   ```
+   1. ```train.py``` is located in ```tools/train.py```
+   2. model config files are located in ```configs/textrecog/svtr/```
+8) Checkpoints and training information logs will be saved in ```tools/work_dirs/svtr_model_name``` directory.
 
 ## Steps for inference using detection
 1) Download the model weights of one of the detection models.
